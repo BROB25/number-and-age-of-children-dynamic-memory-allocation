@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+ int n;
+ printf("Enter # of children: ");
+ scanf("%d", &n);
+ 
+ // create pointer variable
+ int* ages;
+ 
+ // dynamically allocate memory for n number of int
+ ages = (int*) malloc(n * sizeof(int));
+ 
+ // if memory can't be allocated, end the main() function
+ if (ages == NULL)
+ {
+  printf("Error, memory not allocated");
+  return 0;
+ }
+ 
+ printf("Enter ages: ");
+ for (int i = 0; i < n; ++i)
+ {
+  // store value in allocated memory using ages pointer
+  scanf("%d", ages + i);
+ }
+ 
+ printf("Ages: ");
+ for (int i = 0; i < n; ++i)
+ {
+  printf("%d ", *(ages + i));
+ }
+ 
+ // free allocated memory
+ free(ages);
+ 
+ return 0;
+}
